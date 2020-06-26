@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "student-life-front"
+    }
+  },
+  "defaultProject": "student-life-front",
+  "cli": {
+    "analytics": "8312310d-3f1c-4d72-a834-b327b7c21df7"
+  }
 }
