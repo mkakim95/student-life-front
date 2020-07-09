@@ -1,0 +1,66 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+        <i class="icon-reorder shaded"></i>
+      </a>
+
+      <div class="nav-collapse collapse navbar-inverse-collapse">
+        <ul class="nav pull-right">
+        </ul>
+      </div><!-- /.nav-collapse -->
+    </div>
+  </div><!-- /navbar-inner -->
+</div><!-- /navbar -->
+
+
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="module module-login span4 offset4">
+        <form class="form-vertical">
+          <div class="module-head">
+            <h3 align="center">Регистрация</h3>
+          </div>
+          <div class="module-body">
+            <div class="control-group">
+              <div class="controls row-fluid">
+                <!--<label for="inputUsername">Имя пользователя</label>-->
+                <input class="span12" [(ngModel)]="form.username" placeholder="Имя пользователя"
+                       type="text" id="inputUsername" name="inputUsername">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="controls row-fluid">
+                <input class="span12" [(ngModel)]="form.email" placeholder="Email"
+                       type="email" id="inputEmail" name="inputUsername">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="controls row-fluid">
+                <!--<label for="inputPassword">Пароль</label>-->
+                <input class="span12" [(ngModel)]="form.password" placeholder="Пароль"
+                       type="password" id="inputPassword" name="inputPassword">
+              </div>
+            </div>
+          </div>
+          <div class="module-foot">
+            <div class="control-group">
+              <div class="controls clearfix">
+                <button type="submit" (click)="register()" class="btn btn-primary pull-right">Зарегистрироваться
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div><!--/.wrapper-->
+
+<div class="footer">
+  <div class="container">
+  </div>
+</div>
