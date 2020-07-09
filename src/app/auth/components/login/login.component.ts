@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {TokenStorageService} from '../../services/token-storage.service';
 import {Router} from '@angular/router';
+import {BlockUI, NgBlockUI} from 'ng-block-ui';
+import {Utils} from '../../services/utils/Utils';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private _authService: AuthService,
               private _tokenStorage: TokenStorageService,
-              /*private _utils: Utils,*/
+              private _utils: Utils,
               private _router: Router) {
   }
 
@@ -24,14 +26,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this._utils.blockStart();
     this._authService.login(this.form).subscribe(
       data => {
-        this._tokenStorage.saveToken(data.token);
-        this._tokenStorage.saveUser(data);
+        setTimeout(() => {
+          this._tokenStorage.saveToken(data.token);
+          this._tokenStorage.saveUser(data);
 
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this._router.navigateByUrl('/home');
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          this._router.navigateByUrl('/home');
+
+          this._utils.blockStop();
+        }, 1000);
       },
       err => {
         this.errorMessage = err.error.message;
@@ -43,9 +50,4 @@ export class LoginComponent implements OnInit {
   logout() {
     this._tokenStorage.signOut();
   }
-
-  reloadPage() {
-    window.location.reload();
-  }
-
 }

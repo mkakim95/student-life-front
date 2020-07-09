@@ -9,17 +9,13 @@
 
         <ul class="nav pull-right">
 
-          <li><a href="#">
+          <li><a [routerLink]="['/register']">
             Зарегистрироваться
           </a></li>
 
 
           <li><a href="#">
             Забыли пароль?
-          </a></li>
-
-          <li><a href="#" (click)="logout()">
-            Выйти
           </a></li>
 
         </ul>
@@ -40,16 +36,14 @@
           <div class="module-body">
             <div class="control-group">
               <div class="controls row-fluid">
-                <label for="inputUsername">Имя пользователя</label>
-                <input class="span12" [(ngModel)]="form.username"
+                <input class="span12" [(ngModel)]="form.username" placeholder="Имя пользователя"
                        type="text" id="inputUsername" name="inputUsername">
               </div>
             </div>
 
             <div class="control-group">
               <div class="controls row-fluid">
-                <label for="inputPassword">Пароль</label>
-                <input class="span12" [(ngModel)]="form.password"
+                <input class="span12" [(ngModel)]="form.password" placeholder="Пароль"
                        type="password" id="inputPassword" name="inputPassword">
               </div>
             </div>

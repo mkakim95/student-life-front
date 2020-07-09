@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
+import {BlockUI, NgBlockUI} from 'ng-block-ui';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Utils {
 
-  /*@BlockUI() blockUI: NgBlockUI;
+  @BlockUI() blockUI: NgBlockUI;
 
   constructor() {
   }
@@ -19,5 +20,4 @@ export class Utils {
       this.blockUI.stop();
     }
   }
-*/
 }

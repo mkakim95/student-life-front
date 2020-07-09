@@ -9,6 +9,9 @@ import {authInterceptorProviders} from './auth/helpers/auth.interceptor';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { RegisterComponent } from './auth/components/register/register.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BlockUIModule} from 'ng-block-ui';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,12 @@ import { RegisterComponent } from './auth/components/register/register.component
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      closeButton: true
+    }),
+    BlockUIModule.forRoot()
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

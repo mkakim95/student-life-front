@@ -12,11 +12,13 @@ import {TokenStorageService} from '../services/token-storage.service';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private _router: Router,
-              private _tokenStorage: TokenStorageService) {
+              private _tokenStorage: TokenStorageService,
+              private _toastrService: ToastrService) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -33,7 +35,9 @@ export class AuthInterceptor implements HttpInterceptor {
         },
         (err: any) => {
           if (err instanceof HttpErrorResponse) {
-            if (err.status === 401) {
+            if (err.status == 400) {
+              this._toastrService.error(err.error.message);
+            } else if (err.status === 401) {
               if (this._router.url.indexOf('login') == -1) { // this._router.url.length > 2
                 const login = 'login';
                 this._router.navigate([login], {queryParams: {returnUrl: this._router.url}});
